@@ -4,7 +4,8 @@
   "description": "A simple REST API CRUD application with Git hooks for pre-commit and pre-push.",
   "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
@@ -16,7 +17,9 @@
     "CRUD",
     "Git Hooks",
     "TypeScript",
-    "Express"
+    "Express",
+    "Jest",
+    "ESLint"
   ],
   "author": "Juan Esteban Lopez",
   "license": "ISC",
@@ -26,13 +29,16 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.3.0",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
     "eslint": "^10.0.2",
     "globals": "^17.3.0",
     "husky": "^9.1.7",
+    "jest": "^30.2.0",
     "lint-staged": "^16.2.7",
+    "ts-jest": "^29.4.6",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1"
