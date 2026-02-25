@@ -4,6 +4,9 @@ dotenv.config();
 
 import express from "express";
 import { AppDataSource } from "./config/database";
+import { errorHandler } from "./middlewares/error.middleware";
+
+import categoryRoutes from "./routes/category.route";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,9 +20,14 @@ app.get("/", (_req, res) => {
   res.send("Bievenido a mi API");
 });
 
+app.use('/api/categories', categoryRoutes);
+
 app.get("/health", (_req, res) => {
   res.json({ status: "OK", timestamp: new Date().toISOString() });
 });
+
+// Manejo de errores
+app.use(errorHandler);
 
 // Inicializar la conexión a la base de datos y luego iniciar el servidor
 AppDataSource.initialize()
@@ -32,3 +40,4 @@ AppDataSource.initialize()
   .catch((error) => {
     console.error("Error al conectar a la base de datos:", error);
   });
+
