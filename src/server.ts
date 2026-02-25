@@ -7,6 +7,7 @@ import { AppDataSource } from "./config/database";
 import { errorHandler } from "./middlewares/error.middleware";
 
 import categoryRoutes from "./routes/category.route";
+import productRoutes from "./routes/product.route";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use('/api/categories', categoryRoutes);
+app.use('/api/products', productRoutes);
 
 app.get("/health", (_req, res) => {
   res.json({ status: "OK", timestamp: new Date().toISOString() });
