@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./docs/swagger";
 import { AppDataSource } from "./config/database";
 import { errorHandler } from "./middlewares/error.middleware";
 
@@ -21,6 +23,10 @@ app.get("/", (_req, res) => {
   res.send("Bievenido a mi API");
 });
 
+// Documentación de Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// Rutas de la API
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
 
